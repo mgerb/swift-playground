@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6E337775705014CC50812865 /* Pods_MyPlayground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD68C734F08FD3E9A66F958 /* Pods_MyPlayground.framework */; };
 		A2219C1C1FAFD63D000B2889 /* RedditPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2219C1B1FAFD63D000B2889 /* RedditPostCell.swift */; };
+		A23DE8631FB2AA1100F566E1 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23DE8621FB2AA1100F566E1 /* CommentsViewController.swift */; };
 		A2E2AD161FAC0C04002E7C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2AD151FAC0C04002E7C69 /* AppDelegate.swift */; };
 		A2E2AD181FAC0C04002E7C69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2AD171FAC0C04002E7C69 /* ViewController.swift */; };
 		A2E2AD1B1FAC0C04002E7C69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2AD191FAC0C04002E7C69 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		1AD68C734F08FD3E9A66F958 /* Pods_MyPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DACF805EC63461F92CB6DEF /* Pods-MyPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPlayground.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyPlayground/Pods-MyPlayground.debug.xcconfig"; sourceTree = "<group>"; };
 		A2219C1B1FAFD63D000B2889 /* RedditPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPostCell.swift; sourceTree = "<group>"; };
+		A23DE8621FB2AA1100F566E1 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		A2E2AD121FAC0C04002E7C69 /* MyPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E2AD151FAC0C04002E7C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E2AD171FAC0C04002E7C69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				A2E2AD1E1FAC0C04002E7C69 /* LaunchScreen.storyboard */,
 				A2E2AD211FAC0C04002E7C69 /* Info.plist */,
 				A2219C1B1FAFD63D000B2889 /* RedditPostCell.swift */,
+				A23DE8621FB2AA1100F566E1 /* CommentsViewController.swift */,
 			);
 			path = MyPlayground;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23DE8631FB2AA1100F566E1 /* CommentsViewController.swift in Sources */,
 				A2E2AD181FAC0C04002E7C69 /* ViewController.swift in Sources */,
 				A2219C1C1FAFD63D000B2889 /* RedditPostCell.swift in Sources */,
 				A2E2AD161FAC0C04002E7C69 /* AppDelegate.swift in Sources */,

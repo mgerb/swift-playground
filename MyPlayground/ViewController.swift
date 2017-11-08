@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet var redditTableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var navHeader: UINavigationItem!
-    @IBOutlet weak var searchBar: UISearchBar!
-    
+
     var redditPosts: [String] = []
-    
+    var redditPostsCopy: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,10 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         redditTableView.separatorColor = UIColor.cyan
         redditTableView.showsVerticalScrollIndicator = false
         redditTableView.keyboardDismissMode = .onDrag
-        
+
         print(self.searchBar.frame.size.height)
         DispatchQueue.main.async{
-                self.redditTableView.setContentOffset(CGPoint(x: 0, y: self.searchBar.bounds.height - self.navigationController!.navigationBar.frame.height), animated: true)
+                self.redditTableView.setContentOffset(CGPoint(x: 0, y: self.searchBar.bounds.height - self.navigationController!.navigationBar.frame.height), animated: false)
         }
 
         self.navHeader.title = "test123"
@@ -59,6 +60,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 })
                 
+                self.redditPostsCopy = self.redditPosts
+                
                 DispatchQueue.main.async{
                         self.redditTableView?.reloadData()
                 }
@@ -78,6 +81,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // deselect row right after selecting
         tableView.deselectRow(at: indexPath, animated: false)
+        let commentsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        commentsViewController.tempTitle = "test123"
+        self.navigationController?.pushViewController(commentsViewController as UIViewController, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,6 +116,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         return [deleteAction, editAction]
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            self.redditPosts = self.redditPostsCopy
+        } else {
+            self.redditPosts = self.redditPostsCopy.filter { (s) -> Bool in
+                return regexMatches(for: searchText, in: s).count > 0
+            }
+        }
 
+        DispatchQueue.main.async {
+            self.redditTableView?.reloadData()
+        }
+        print("searchText \(searchText)")
+    }
+    
+    func regexMatches(for regex: String, in text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let nsString = text as NSString
+            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
+            return results.map { nsString.substring(with: $0.range)}
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
 }
 
